@@ -70,10 +70,12 @@ When working on the project use consistent coding style. Please follow The Zen o
 
 
 ## Project Deadline
-Take your time but try to deliver it within 1 or 2 weeks time. If we don't see any activity in your test repository after 2 weeks (at least initial commits), we will automatically withdraw your application.
+Take your time but try to deliver it within 1 or 2 weeks time. If we don't see any activity in your test repository after 1 weeks (at least initial commits), we will automatically withdraw your application.
 
 Better keeps us updated daily activity while working with team. 
 
 
-Sharing any sort of assignment materials & resources is completely prohibited. :) 
+Sharing any sort of assignment materials & resources is completely prohibited. 😊 
 =
+
+#HAPPY CODING 😍
