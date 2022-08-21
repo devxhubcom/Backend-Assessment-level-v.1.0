@@ -43,13 +43,14 @@ INSTALLED_APPS = [
     'rest_framework',
     "corsheaders",
     "debug_toolbar",
-    "store",
-    "search",
     'crispy_forms',
-    "user",
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    "store",
+    "search",
+    "upload",
+    "user",
 ]
 
 SITE_ID = 1
