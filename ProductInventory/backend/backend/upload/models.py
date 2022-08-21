@@ -1,6 +1,5 @@
 from django.db import models
-from django.conf import settings
-import os
+
 
 # Create your models here.
 
@@ -29,8 +28,4 @@ class File(models.Model):
         upload_to="upload/products/files/", null=True, blank=True)
 
     def __str__(self) -> str:
-        return str(self.file.url)
-
-    @property
-    def relative_path(self):
-        return os.path.relpath(self.file, settings.MEDIA_ROOT)
+        return str(self.file)
