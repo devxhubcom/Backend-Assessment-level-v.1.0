@@ -17,16 +17,20 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         {% if user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link active" href="{% url 'logout' %}"> Logout </a>
+          <a class="nav-link active" href="{% url 'logout' %}">
+            Django Default Logout
+          </a>
         </li>
         {% else %}
         <li class="nav-item">
           <a class="nav-link active" href="{% url 'registration' %}">
-            Registration
+            Django Default Registration
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="{% url 'login' %}"> Login </a>
+          <a class="nav-link active" href="{% url 'login' %}">
+            Django Default Login
+          </a>
         </li>
 
         {% endif %}
@@ -39,19 +43,24 @@
         </li>
         <li class="nav-item">
           <a class="nav-link active" href="{% url 'account_logout' %}">
-            Logout
+            All Auth Logout
           </a>
         </li>
         {% else %}
         <li class="nav-item">
           <a class="nav-link active" href="{% url 'account_signup' %}"
-            >Signup</a
+            >All Auth Signup</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="{% url 'account_login' %}">Login</a>
+          <a class="nav-link active" href="{% url 'account_login' %}"
+            >All Auth Login</a
+          >
         </li>
         {% endif %}
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'search-index' %}">Search</a>
+        </li>
       </ul>
       <ul class="navbar-nav me-2 mb-2 mb-lg-0">
         {% if user.is_authenticated %}
@@ -64,12 +73,13 @@
         </li>
         {% endif %}
       </ul>
-      <form class="d-flex">
+      <form class="d-flex" method="get" action="{% url 'search-index' %}">
         <input
           class="form-control me-2"
           type="search"
           placeholder="Search"
           aria-label="Search"
+          name="search_keyword"
         />
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>

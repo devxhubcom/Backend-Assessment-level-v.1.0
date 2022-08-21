@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'rest_framework',
     "corsheaders",
+    "debug_toolbar",
     "store",
+    "search",
     'crispy_forms',
     "user",
     'allauth',
@@ -55,6 +57,7 @@ SITE_ID = 1
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -170,3 +173,6 @@ EMAIL_HOST = config("EMAIL_HOST")
 EMAIL_HOST_USER = config("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
 EMAIL_PORT = config("EMAIL_PORT")
+
+
+INTERNAL_IPS = [config("INTERNAL_IPS")]
