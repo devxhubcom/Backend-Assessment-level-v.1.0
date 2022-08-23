@@ -14,11 +14,23 @@ import {
   updateProductPATCHReducer,
   updateProductPUTReducer,
 } from "./reducers/productReducers";
+import {
+  getCategoryListReducer,
+  addCategoryReducer,
+  getCategoryDetailsReducer,
+  deleteCategoryReducer,
+  updateCategoryReducer,
+} from "./reducers/categoryReducers";
 
 const middleware = [thunk];
 
 const store = configureStore({
   reducer: {
+    getCategoryListReducer: getCategoryListReducer,
+    addCategoryReducer: addCategoryReducer,
+    deleteCategoryReducer: deleteCategoryReducer,
+    updateCategoryReducer: updateCategoryReducer,
+    getCategoryDetailsReducer: getCategoryDetailsReducer,
     getProductListReducer: getProductListReducer,
     addProductReducer: addProductReducer,
     deleteProductReducer: deleteProductReducer,

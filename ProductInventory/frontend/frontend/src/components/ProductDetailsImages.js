@@ -7,7 +7,7 @@ import Loader from "./Loader";
 import Error from "./Error";
 import { deleteProductImageAction } from "../actions/productActions";
 
-const ProductDetailsImages = ({ id }) => {
+const ProductDetailsImages = ({ id, categoryId }) => {
   const dispatch = useDispatch();
   const { isLoading, productImages, error } = useSelector(
     (state) => state.getProductImagesReducer
@@ -16,12 +16,12 @@ const ProductDetailsImages = ({ id }) => {
   const { addedImage } = useSelector((state) => state.addProductImageReducer);
 
   useEffect(() => {
-    dispatch(getProductImagesAction(id));
+    dispatch(getProductImagesAction(categoryId, id));
   }, [success, addedImage]);
 
   return (
     <div>
-      <ProductImagesForm id={id} />
+      <ProductImagesForm id={id} categoryId={categoryId} />
       {isLoading && <Loader />}
       {error && <Error error={error.message} />}
       <div className=' d-flex row'>
@@ -39,7 +39,7 @@ const ProductDetailsImages = ({ id }) => {
                 variant='danger'
                 className=' d-block my-2'
                 onClick={() => {
-                  dispatch(deleteProductImageAction(id, image.id));
+                  dispatch(deleteProductImageAction(categoryId, id, image.id));
                 }}>
                 <i className='fa-solid fa-trash'></i>
               </Button>

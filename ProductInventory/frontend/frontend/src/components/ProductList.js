@@ -7,17 +7,18 @@ import Error from "./Error";
 import { deleteProductAction } from "../actions/productActions";
 import { useNavigate } from "react-router-dom";
 
-const ProductList = () => {
+const ProductList = ({ categoryId }) => {
   const dispatch = useDispatch();
   const { isLoading, productList, error } = useSelector(
     (state) => state.getProductListReducer
   );
+
   const { addedProduct } = useSelector((state) => state.addProductReducer);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(getProductListAction());
+    dispatch(getProductListAction(categoryId));
   }, [addedProduct]);
 
   return (
@@ -50,16 +51,19 @@ const ProductList = () => {
                       <Button
                         variant='danger'
                         onClick={() => {
-                          dispatch(deleteProductAction(product.id));
+                          dispatch(deleteProductAction(categoryId, product.id));
                         }}>
                         <i className='fa-solid fa-trash'></i>
                       </Button>
                       <Button
                         variant='warning'
                         onClick={() => {
-                          navigate(`/products/${product.id}`, {
-                            replace: true,
-                          });
+                          navigate(
+                            `/category/${categoryId}/products/${product.id}`,
+                            {
+                              replace: true,
+                            }
+                          );
                         }}>
                         <i className='fa-solid fa-pen'></i>
                       </Button>

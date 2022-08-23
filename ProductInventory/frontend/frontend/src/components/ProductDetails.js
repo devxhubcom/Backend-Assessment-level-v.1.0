@@ -13,7 +13,7 @@ import Loader from "./Loader";
 import Error from "./Error";
 
 const ProductDetails = () => {
-  const { id } = useParams();
+  const { categoryId, id } = useParams();
   const dispatch = useDispatch();
   const { isLoading, productDetails, error } = useSelector(
     (state) => state.getProductDetailsReducer
@@ -52,18 +52,18 @@ const ProductDetails = () => {
       formData.append("inventory", inventory);
       formData.append("unit_price", unitPrice);
       formData.append("image", image);
-      dispatch(updateProductPUTAction(id, formData));
+      dispatch(updateProductPUTAction(categoryId, id, formData));
     } else {
       formData.append("title", title);
       formData.append("description", description);
       formData.append("inventory", inventory);
       formData.append("unit_price", unitPrice);
-      dispatch(updateProductPATCHAction(id, formData));
+      dispatch(updateProductPATCHAction(categoryId, id, formData));
     }
   };
 
   useEffect(() => {
-    dispatch(getProductDetailsAction(id));
+    dispatch(getProductDetailsAction(categoryId, id));
   }, [updatedProductPATCH, updatedProductPUT]);
 
   return (
@@ -73,7 +73,7 @@ const ProductDetails = () => {
       <div className=' d-block my-2'>
         <Button
           onClick={() => {
-            navigate("/", { replace: true });
+            navigate(`/category/${categoryId}/`, { replace: true });
           }}>
           <i className='fa-solid fa-arrow-left-long'></i>
         </Button>
@@ -97,7 +97,7 @@ const ProductDetails = () => {
               <h2>{productDetails.title}</h2>
               <h5>{productDetails.description}</h5>
               <h6>{productDetails.inventory}</h6>
-              <h6>{productDetails.unit_price}</h6>
+              <h6>৳{productDetails.unit_price}</h6>
             </div>
           )}
         </Col>
@@ -167,10 +167,10 @@ const ProductDetails = () => {
       <hr />
       <Row>
         <Col>
-          <ProductDetailsFiles id={id} />
+          <ProductDetailsFiles id={id} categoryId={categoryId} />
         </Col>
         <Col>
-          <ProductDetailsImages id={id} />
+          <ProductDetailsImages id={id} categoryId={categoryId} />
         </Col>
       </Row>
     </div>

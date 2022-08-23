@@ -103,6 +103,7 @@ export const getProductDetailsReducer = (
       return state;
   }
 };
+
 export const getProductImagesReducer = (
   state = { productImages: [] },
   action

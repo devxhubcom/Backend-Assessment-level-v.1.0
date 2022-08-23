@@ -35,10 +35,10 @@ import {
   UPDATE_PRODUCT_PUT_FAILED,
 } from "../constants/productConstants";
 
-export const getProductListAction = () => async (dispatch) => {
+export const getProductListAction = (categoryId) => async (dispatch) => {
   dispatch({ type: GET_PRODUCT_LIST_REQUEST });
   axios
-    .get("/store/products/")
+    .get(`/store/categories/${categoryId}/products/`)
     .then((response) => {
       return response.data;
     })
@@ -50,11 +50,11 @@ export const getProductListAction = () => async (dispatch) => {
     });
 };
 
-export const addProductAction = (formData) => async (dispatch) => {
+export const addProductAction = (categoryId, formData) => async (dispatch) => {
   dispatch({ type: ADD_PRODUCT_REQUEST });
 
   axios
-    .post("/store/products/", formData, {
+    .post(`/store/categories/${categoryId}/products/`, formData, {
       headers: { "Content-Type": "multipart/form-data" },
     })
     .then((response) => {
@@ -70,11 +70,11 @@ export const addProductAction = (formData) => async (dispatch) => {
     });
 };
 
-export const deleteProductAction = (id) => async (dispatch) => {
+export const deleteProductAction = (categoryId, id) => async (dispatch) => {
   dispatch({ type: ADD_PRODUCT_REQUEST });
 
   axios
-    .delete(`/store/products/${id}`)
+    .delete(`/store/categories/${categoryId}/products/${id}`)
     .then((response) => {
       return response.data;
     })
@@ -88,11 +88,11 @@ export const deleteProductAction = (id) => async (dispatch) => {
     });
 };
 
-export const getProductDetailsAction = (id) => async (dispatch) => {
+export const getProductDetailsAction = (categoryId, id) => async (dispatch) => {
   dispatch({ type: GET_PRODUCT_DETAILS_REQUEST });
 
   axios
-    .get(`/store/products/${id}`)
+    .get(`/store/categories/${categoryId}/products/${id}/`)
     .then((response) => {
       return response.data;
     })
@@ -106,11 +106,11 @@ export const getProductDetailsAction = (id) => async (dispatch) => {
     });
 };
 
-export const getProductImagesAction = (id) => async (dispatch) => {
+export const getProductImagesAction = (categoryId, id) => async (dispatch) => {
   dispatch({ type: GET_PRODUCT_IMAGES_REQUEST });
 
   axios
-    .get(`/store/products/${id}/images/`)
+    .get(`/store/categories/${categoryId}/products/${id}/images/`)
     .then((response) => {
       return response.data;
     })
@@ -124,11 +124,11 @@ export const getProductImagesAction = (id) => async (dispatch) => {
     });
 };
 
-export const getProductFilesAction = (id) => async (dispatch) => {
+export const getProductFilesAction = (categoryId, id) => async (dispatch) => {
   dispatch({ type: GET_PRODUCT_FILES_REQUEST });
 
   axios
-    .get(`/store/products/${id}/files/`)
+    .get(`/store/categories/${categoryId}/products/${id}/files/`)
     .then((response) => {
       return response.data;
     })
@@ -142,118 +142,130 @@ export const getProductFilesAction = (id) => async (dispatch) => {
     });
 };
 
-export const deleteProductImageAction = (id, imageId) => async (dispatch) => {
-  dispatch({ type: DELETE_PRODUCT_IMAGE_REQUEST });
+export const deleteProductImageAction =
+  (categoryId, id, imageId) => async (dispatch) => {
+    dispatch({ type: DELETE_PRODUCT_IMAGE_REQUEST });
 
-  axios
-    .delete(`/store/products/${id}/images/${imageId}/`)
-    .then((response) => {
-      return response.data;
-    })
-    .then((data) => {
-      console.log(data);
-      dispatch({ type: DELETE_PRODUCT_IMAGE_SUCCESS, payload: data });
-    })
-    .catch((error) => {
-      console.log(error);
-      dispatch({ type: DELETE_PRODUCT_IMAGE_FAILED, payload: error });
-    });
-};
+    axios
+      .delete(
+        `/store/categories/${categoryId}/products/${id}/images/${imageId}/`
+      )
+      .then((response) => {
+        return response.data;
+      })
+      .then((data) => {
+        console.log(data);
+        dispatch({ type: DELETE_PRODUCT_IMAGE_SUCCESS, payload: data });
+      })
+      .catch((error) => {
+        console.log(error);
+        dispatch({ type: DELETE_PRODUCT_IMAGE_FAILED, payload: error });
+      });
+  };
 
-export const deleteProductFileAction = (id, fileId) => async (dispatch) => {
-  dispatch({ type: DELETE_PRODUCT_FILE_REQUEST });
+export const deleteProductFileAction =
+  (categoryId, id, fileId) => async (dispatch) => {
+    dispatch({ type: DELETE_PRODUCT_FILE_REQUEST });
 
-  axios
-    .delete(`/store/products/${id}/files/${fileId}/`)
-    .then((response) => {
-      return response.data;
-    })
-    .then((data) => {
-      console.log(data);
-      dispatch({ type: DELETE_PRODUCT_FILE_SUCCESS, payload: data });
-    })
-    .catch((error) => {
-      console.log(error);
-      dispatch({ type: DELETE_PRODUCT_FILE_FAILED, payload: error });
-    });
-};
+    axios
+      .delete(`/store/categories/${categoryId}/products/${id}/files/${fileId}/`)
+      .then((response) => {
+        return response.data;
+      })
+      .then((data) => {
+        console.log(data);
+        dispatch({ type: DELETE_PRODUCT_FILE_SUCCESS, payload: data });
+      })
+      .catch((error) => {
+        console.log(error);
+        dispatch({ type: DELETE_PRODUCT_FILE_FAILED, payload: error });
+      });
+  };
 
-export const addProductImageAction = (id, formData) => async (dispatch) => {
-  dispatch({ type: ADD_PRODUCT_IMAGE_REQUEST });
+export const addProductImageAction =
+  (categoryId, id, formData) => async (dispatch) => {
+    dispatch({ type: ADD_PRODUCT_IMAGE_REQUEST });
 
-  axios
-    .post(`/store/products/${id}/images/`, formData, {
-      headers: { "Content-Type": "multipart/form-data" },
-    })
-    .then((response) => {
-      return response.data;
-    })
-    .then((data) => {
-      console.log(data);
-      dispatch({ type: ADD_PRODUCT_IMAGE_SUCCESS, payload: data });
-    })
-    .catch((error) => {
-      console.log(error);
-      dispatch({ type: ADD_PRODUCT_IMAGE_FAILED, payload: error });
-    });
-};
+    axios
+      .post(
+        `/store/categories/${categoryId}/products/${id}/images/`,
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      )
+      .then((response) => {
+        return response.data;
+      })
+      .then((data) => {
+        console.log(data);
+        dispatch({ type: ADD_PRODUCT_IMAGE_SUCCESS, payload: data });
+      })
+      .catch((error) => {
+        console.log(error);
+        dispatch({ type: ADD_PRODUCT_IMAGE_FAILED, payload: error });
+      });
+  };
 
-export const addProductFileAction = (id, formData) => async (dispatch) => {
-  dispatch({ type: ADD_PRODUCT_FILE_REQUEST });
+export const addProductFileAction =
+  (categoryId, id, formData) => async (dispatch) => {
+    dispatch({ type: ADD_PRODUCT_FILE_REQUEST });
 
-  axios
-    .post(`/store/products/${id}/files/`, formData, {
-      headers: { "Content-Type": "multipart/form-data" },
-    })
-    .then((response) => {
-      return response.data;
-    })
-    .then((data) => {
-      console.log(data);
-      dispatch({ type: ADD_PRODUCT_FILE_SUCCESS, payload: data });
-    })
-    .catch((error) => {
-      console.log(error);
-      dispatch({ type: ADD_PRODUCT_FILE_FAILED, payload: error });
-    });
-};
+    axios
+      .post(`/store/categories/${categoryId}/products/${id}/files/`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
+      .then((response) => {
+        return response.data;
+      })
+      .then((data) => {
+        console.log(data);
+        dispatch({ type: ADD_PRODUCT_FILE_SUCCESS, payload: data });
+      })
+      .catch((error) => {
+        console.log(error);
+        dispatch({ type: ADD_PRODUCT_FILE_FAILED, payload: error });
+      });
+  };
 
-export const updateProductPATCHAction = (id, formData) => async (dispatch) => {
-  dispatch({ type: UPDATE_PRODUCT_PATCH_REQUEST });
+export const updateProductPATCHAction =
+  (categoryId, id, formData) => async (dispatch) => {
+    dispatch({ type: UPDATE_PRODUCT_PATCH_REQUEST });
 
-  axios
-    .patch(`/store/products/${id}/`, formData, {
-      headers: { "Content-Type": "multipart/form-data" },
-    })
-    .then((response) => {
-      return response.data;
-    })
-    .then((data) => {
-      console.log(data);
-      dispatch({ type: UPDATE_PRODUCT_PATCH_SUCCESS, payload: data });
-    })
-    .catch((error) => {
-      console.log(error);
-      dispatch({ type: UPDATE_PRODUCT_PATCH_FAILED, payload: error });
-    });
-};
+    axios
+      .patch(`/store/categories/${categoryId}/products/${id}/`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
+      .then((response) => {
+        return response.data;
+      })
+      .then((data) => {
+        console.log(data);
+        dispatch({ type: UPDATE_PRODUCT_PATCH_SUCCESS, payload: data });
+      })
+      .catch((error) => {
+        console.log(error);
+        dispatch({ type: UPDATE_PRODUCT_PATCH_FAILED, payload: error });
+      });
+  };
 
-export const updateProductPUTAction = (id, formData) => async (dispatch) => {
-  dispatch({ type: UPDATE_PRODUCT_PUT_REQUEST });
+export const updateProductPUTAction =
+  (categoryId, id, formData) => async (dispatch) => {
+    dispatch({ type: UPDATE_PRODUCT_PUT_REQUEST });
 
-  axios
-    .put(`/store/products/${id}/`, formData, {
-      headers: { "Content-Type": "multipart/form-data" },
-    })
-    .then((response) => {
-      return response.data;
-    })
-    .then((data) => {
-      console.log(data);
-      dispatch({ type: UPDATE_PRODUCT_PUT_SUCCESS, payload: data });
-    })
-    .catch((error) => {
-      console.log(error);
-      dispatch({ type: UPDATE_PRODUCT_PUT_FAILED, payload: error });
-    });
-};
+    axios
+      .put(`/store/categories/${categoryId}/products/${id}/`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
+      .then((response) => {
+        return response.data;
+      })
+      .then((data) => {
+        console.log(data);
+        dispatch({ type: UPDATE_PRODUCT_PUT_SUCCESS, payload: data });
+      })
+      .catch((error) => {
+        console.log(error);
+        dispatch({ type: UPDATE_PRODUCT_PUT_FAILED, payload: error });
+      });
+  };

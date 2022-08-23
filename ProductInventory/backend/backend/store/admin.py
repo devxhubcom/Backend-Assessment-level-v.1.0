@@ -1,7 +1,9 @@
 from django.contrib import admin
-from .models import Product, ProductImage, ProductFile
+from .models import Category, Product, ProductImage, ProductFile
 
 # Register your models here.
+
+admin.site.register(Category)
 
 
 class ProductImageAdmin(admin.TabularInline):
@@ -20,6 +22,7 @@ class ProductFileAdmin(admin.TabularInline):
 class ProductAdmin(admin.ModelAdmin):
     readonly_fields = ["created_at", "updated_at"]
     inlines = [ProductImageAdmin, ProductFileAdmin]
-    list_display = ["title", "created_at", "updated_at"]
-    fields = ["title", "description", "inventory", "unit_price", "image"]
+    list_display = ["title", "category"]
+    fields = ["title", "category", "description",
+              "inventory", "unit_price", "image"]
     list_per_page = 10

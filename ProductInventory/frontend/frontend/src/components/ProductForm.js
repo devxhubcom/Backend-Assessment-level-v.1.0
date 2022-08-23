@@ -5,7 +5,7 @@ import { addProductAction } from "../actions/productActions";
 import Loader from "./Loader";
 import Error from "./Error";
 
-const ProductForm = () => {
+const ProductForm = ({ categoryId }) => {
   const dispatch = useDispatch();
   const { isLoading, addedProduct, error } = useSelector(
     (state) => state.addProductReducer
@@ -25,7 +25,7 @@ const ProductForm = () => {
     formData.append("inventory", inventory);
     formData.append("unit_price", unitPrice);
     formData.append("image", image);
-    dispatch(addProductAction(formData));
+    dispatch(addProductAction(categoryId, formData));
   };
 
   return (

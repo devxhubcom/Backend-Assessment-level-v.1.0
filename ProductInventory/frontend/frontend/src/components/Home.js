@@ -1,25 +1,10 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
-import ProductForm from "./ProductForm";
-import ProductList from "./ProductList";
+import CategoryList from "./CategoryList";
 
 const Home = () => {
   return (
     <div>
-      <div className=' container-fluid my-5'>
-        <Row>
-          <Col>
-            <div className=' text-start'>
-              <ProductForm />
-            </div>
-          </Col>
-          <Col>
-            <div className=' text-start'>
-              <ProductList />
-            </div>
-          </Col>
-        </Row>
-      </div>
+      <CategoryList />
     </div>
   );
 };

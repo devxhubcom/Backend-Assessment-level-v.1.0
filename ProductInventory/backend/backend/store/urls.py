@@ -1,12 +1,19 @@
+from cgitb import lookup
 from django.urls import path, include
 from rest_framework_nested import routers
 from . import views
 
 router = routers.DefaultRouter()
-router.register("products", views.ProductViewSet, basename="products")
+router.register("categories", views.CategoryViewSet, basename="categories")
+
+category_router = routers.NestedSimpleRouter(
+    router, "categories", lookup="category")
+
+category_router.register("products", views.ProductViewSet,
+                         basename="category-products")
 
 product_router = routers.NestedSimpleRouter(
-    router, "products", lookup="product")
+    category_router, "products", lookup="product")
 
 product_router.register(
     "images", views.ProductImageViewSet, basename="product-images")
@@ -15,5 +22,6 @@ product_router.register(
 
 urlpatterns = [
     path("", include(router.urls)),
+    path("", include(category_router.urls)),
     path("", include(product_router.urls))
 ]

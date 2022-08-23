@@ -7,7 +7,7 @@ import { getProductFilesAction } from "../actions/productActions";
 import ProductFilesForm from "./ProductFilesForm";
 import { deleteProductFileAction } from "../actions/productActions";
 
-const ProductDetailsFiles = ({ id }) => {
+const ProductDetailsFiles = ({ id, categoryId }) => {
   const dispatch = useDispatch();
   const { isLoading, productFiles, error } = useSelector(
     (state) => state.getProductFilesReducer
@@ -16,12 +16,12 @@ const ProductDetailsFiles = ({ id }) => {
   const { addedFile } = useSelector((state) => state.addProductFileReducer);
 
   useEffect(() => {
-    dispatch(getProductFilesAction(id));
+    dispatch(getProductFilesAction(categoryId, id));
   }, [success, addedFile]);
 
   return (
     <div className=' container my-2'>
-      <ProductFilesForm id={id} />
+      <ProductFilesForm id={id} categoryId={categoryId} />
       {isLoading && <Loader />}
       {error && <Error error={error.message} />}
       <ListGroup>
@@ -33,7 +33,9 @@ const ProductDetailsFiles = ({ id }) => {
                   <Button
                     variant='danger'
                     onClick={() => {
-                      dispatch(deleteProductFileAction(id, file.id));
+                      dispatch(
+                        deleteProductFileAction(categoryId, id, file.id)
+                      );
                     }}>
                     <i className='fa-solid fa-trash'></i>
                   </Button>

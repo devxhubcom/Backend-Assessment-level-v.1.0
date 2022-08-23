@@ -3,15 +3,17 @@ import { Button, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { addProductImageAction } from "../actions/productActions";
 
-const ProductImagesForm = ({ id }) => {
+const ProductImagesForm = ({ id, categoryId }) => {
   const dispatch = useDispatch();
-  const [image, setImage] = useState("");
+  const [images, setImages] = useState("");
 
   const submitHandler = (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("image", image);
-    dispatch(addProductImageAction(id, formData));
+    for (var image of images) {
+      formData.append("image", image);
+    }
+    dispatch(addProductImageAction(categoryId, id, formData));
   };
 
   return (
@@ -21,8 +23,9 @@ const ProductImagesForm = ({ id }) => {
           <Form.Label>Add Images</Form.Label>
           <Form.Control
             type='file'
+            multiple
             onChange={(event) => {
-              setImage(event.target.files[0]);
+              setImages(event.target.files);
             }}
           />
         </Form.Group>

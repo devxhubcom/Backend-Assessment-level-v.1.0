@@ -3,14 +3,16 @@ import { Form, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { addProductFileAction } from "../actions/productActions";
 
-const ProductFilesForm = ({ id }) => {
+const ProductFilesForm = ({ id, categoryId }) => {
   const dispatch = useDispatch();
-  const [file, setFile] = useState("");
+  const [files, setFiles] = useState("");
   const submitHandler = (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("file", file);
-    dispatch(addProductFileAction(id, formData));
+    for (var file of files) {
+      formData.append("file", file);
+    }
+    dispatch(addProductFileAction(categoryId, id, formData));
   };
 
   return (
@@ -20,8 +22,9 @@ const ProductFilesForm = ({ id }) => {
           <Form.Label>Add Files</Form.Label>
           <Form.Control
             type='file'
+            multiple
             onChange={(event) => {
-              setFile(event.target.files[0]);
+              setFiles(event.target.files);
             }}
           />
         </Form.Group>
