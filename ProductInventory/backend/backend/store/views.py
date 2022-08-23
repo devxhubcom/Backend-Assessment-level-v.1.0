@@ -13,7 +13,6 @@ class CategoryViewSet(ModelViewSet):
 
 class ProductViewSet(ModelViewSet):
     serializer_class = ProductSerializer
-    queryset = Product.objects.all().order_by("-updated_at")
 
     def get_queryset(self):
         return Product.objects.filter(category_id=self.kwargs["category_pk"]).order_by("-updated_at")
@@ -43,7 +42,6 @@ class ProductImageViewSet(ModelViewSet):
                 "images": images
             }
         )
-
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data,  status=status.HTTP_201_CREATED)
