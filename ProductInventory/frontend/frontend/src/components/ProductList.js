@@ -35,7 +35,7 @@ const ProductList = ({ categoryId }) => {
                     <div className=' d-inline-flex float-start mx-2'>
                       <Image
                         src={product.image}
-                        height={100}
+                        height={150}
                         width={150}
                         className=' rounded-2'
                       />

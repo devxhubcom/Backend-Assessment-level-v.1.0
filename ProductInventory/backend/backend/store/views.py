@@ -2,7 +2,7 @@ from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework import status
 # Create your views here.
-from .serializers import CategorySerializer, ProductFileSerializer, ProductSerializer, ProductImageSerializer
+from .serializers import CategorySerializer, ProductFileSerializer, ProductSerializer, ProductImageSerializer, SummarizeCategorySerializer, SummarizeProductSerializer
 from .models import Category, Product, ProductFile, ProductImage
 
 
@@ -77,3 +77,17 @@ class ProductFileViewSet(ModelViewSet):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class SummarizeCategoryViewSet(ModelViewSet):
+    http_method_names = ["get"]
+    serializer_class = SummarizeCategorySerializer
+    queryset = Category.objects.prefetch_related("product_set").all()
+
+
+class SummarizeProductViewSet(ModelViewSet):
+    http_method_names = ["get"]
+    serializer_class = SummarizeProductSerializer
+
+    def get_queryset(self):
+        return Product.objects.filter(category_id=self.kwargs["category_pk"])

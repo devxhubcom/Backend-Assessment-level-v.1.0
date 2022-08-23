@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import CategoryForm from "./CategoryForm";
 import Loader from "./Loader";
 import Error from "./Error";
+import { useNavigate } from "react-router-dom";
 
 const CategoryList = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,8 @@ const CategoryList = () => {
   const { addedCategory } = useSelector((state) => state.addCategoryReducer);
   const { success } = useSelector((state) => state.deleteCategoryReducer);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     dispatch(getCategoryListAction());
   }, [addedCategory, success]);
@@ -25,7 +28,20 @@ const CategoryList = () => {
   return (
     <div>
       <div className=' container text-start my-5'>
-        <div>
+        <div className=' my-5'>
+          <Button
+            variant='info'
+            onClick={() => {
+              navigate("/summary/", { replace: true });
+            }}>
+            <h4>
+              <i className='fa-solid fa-circle-info'></i>
+              <span>&nbsp;</span>Summary View<span>&nbsp;</span>
+              <i className='fa-solid fa-arrow-right-long'></i>
+            </h4>
+          </Button>
+        </div>
+        <div className=' border border-1 border-opacity-100 rounded-1 p-2'>
           <CategoryForm />
         </div>
         {isLoading && <Loader />}

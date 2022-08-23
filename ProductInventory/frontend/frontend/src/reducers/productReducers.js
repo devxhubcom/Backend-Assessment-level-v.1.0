@@ -35,6 +35,9 @@ import {
   UPDATE_PRODUCT_PUT_REQUEST,
   UPDATE_PRODUCT_PUT_SUCCESS,
   UPDATE_PRODUCT_PUT_FAILED,
+  GET_PRODUCT_SUMMARY_REQUEST,
+  GET_PRODUCT_SUMMARY_SUCCESS,
+  GET_PRODUCT_SUMMARY_FAILED,
 } from "../constants/productConstants";
 
 export const getProductListReducer = (state = { productList: [] }, action) => {
@@ -237,6 +240,25 @@ export const updateProductPUTReducer = (
 
     case UPDATE_PRODUCT_PUT_FAILED:
       return { isLoading: true, error: action.payload };
+
+    default:
+      return state;
+  }
+};
+
+export const getProductSummaryListReducer = (
+  state = { productSummaryList: [] },
+  action
+) => {
+  switch (action.type) {
+    case GET_PRODUCT_SUMMARY_REQUEST:
+      return { isLoading: true };
+
+    case GET_PRODUCT_SUMMARY_SUCCESS:
+      return { isLoading: false, productSummaryList: action.payload };
+
+    case GET_PRODUCT_SUMMARY_FAILED:
+      return { isLoading: false, error: action.payload };
 
     default:
       return state;

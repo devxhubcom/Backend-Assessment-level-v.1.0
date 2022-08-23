@@ -13,6 +13,7 @@ import {
   addProductFileReducer,
   updateProductPATCHReducer,
   updateProductPUTReducer,
+  getProductSummaryListReducer,
 } from "./reducers/productReducers";
 import {
   getCategoryListReducer,
@@ -20,6 +21,7 @@ import {
   getCategoryDetailsReducer,
   deleteCategoryReducer,
   updateCategoryReducer,
+  getCategorySummaryListReducer,
 } from "./reducers/categoryReducers";
 
 const middleware = [thunk];
@@ -31,6 +33,7 @@ const store = configureStore({
     deleteCategoryReducer: deleteCategoryReducer,
     updateCategoryReducer: updateCategoryReducer,
     getCategoryDetailsReducer: getCategoryDetailsReducer,
+    getCategorySummaryListReducer: getCategorySummaryListReducer,
     getProductListReducer: getProductListReducer,
     addProductReducer: addProductReducer,
     deleteProductReducer: deleteProductReducer,
@@ -43,6 +46,7 @@ const store = configureStore({
     addProductFileReducer: addProductFileReducer,
     updateProductPATCHReducer: updateProductPATCHReducer,
     updateProductPUTReducer: updateProductPUTReducer,
+    getProductSummaryListReducer: getProductSummaryListReducer,
   },
   preloadedState: {},
   devTools: process.env.NODE_ENV !== "production",

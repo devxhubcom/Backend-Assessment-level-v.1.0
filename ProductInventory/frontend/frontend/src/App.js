@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import ProductDetails from "./components/ProductDetails";
 import CategoryDetails from "./components/CategoryDetails";
+import CategorySummary from "./components/CategorySummary";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             path='category/:categoryId/products/:id/'
             element={<ProductDetails />}
           />
+          <Route path='summary/' element={<CategorySummary />} />
         </Routes>
       </BrowserRouter>
     </div>

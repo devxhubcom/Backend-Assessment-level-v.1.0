@@ -14,6 +14,9 @@ import {
   UPDATE_CATEGORY_REQUEST,
   UPDATE_CATEGORY_SUCCESS,
   UPDATE_CATEGORY_FAILED,
+  GET_CATEGORY_SUMMARY_REQUEST,
+  GET_CATEGORY_SUMMARY_SUCCESS,
+  GET_CATEGORY_SUMMARY_FAILED,
 } from "../constants/categoryConstants";
 
 export const getCategoryListReducer = (
@@ -98,6 +101,25 @@ export const getCategoryDetailsReducer = (
       return { isLoading: false, categoryDetails: action.payload };
 
     case GET_CATEGORY_DETAILS_FAILED:
+      return { isLoading: false, error: action.payload };
+
+    default:
+      return state;
+  }
+};
+
+export const getCategorySummaryListReducer = (
+  state = { categorySummaryList: [] },
+  action
+) => {
+  switch (action.type) {
+    case GET_CATEGORY_SUMMARY_REQUEST:
+      return { isLoading: true };
+
+    case GET_CATEGORY_SUMMARY_SUCCESS:
+      return { isLoading: false, categorySummaryList: action.payload };
+
+    case GET_CATEGORY_SUMMARY_FAILED:
       return { isLoading: false, error: action.payload };
 
     default:

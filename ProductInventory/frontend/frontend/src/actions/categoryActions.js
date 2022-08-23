@@ -15,6 +15,9 @@ import {
   UPDATE_CATEGORY_REQUEST,
   UPDATE_CATEGORY_SUCCESS,
   UPDATE_CATEGORY_FAILED,
+  GET_CATEGORY_SUMMARY_REQUEST,
+  GET_CATEGORY_SUMMARY_SUCCESS,
+  GET_CATEGORY_SUMMARY_FAILED,
 } from "../constants/categoryConstants";
 
 export const getCategoryListAction = () => async (dispatch) => {
@@ -92,5 +95,20 @@ export const getCategoryDetailsAction = (categoryId) => async (dispatch) => {
     .catch((error) => {
       console.log(error);
       dispatch({ type: GET_CATEGORY_DETAILS_FAILED, payload: error });
+    });
+};
+
+export const getCategorySummaryListAction = () => async (dispatch) => {
+  dispatch({ type: GET_CATEGORY_SUMMARY_REQUEST });
+  axios
+    .get("/store/categories-summary/")
+    .then((response) => {
+      return response.data;
+    })
+    .then((data) => {
+      dispatch({ type: GET_CATEGORY_SUMMARY_SUCCESS, payload: data });
+    })
+    .catch((error) => {
+      dispatch({ type: GET_CATEGORY_SUMMARY_FAILED, payload: error });
     });
 };

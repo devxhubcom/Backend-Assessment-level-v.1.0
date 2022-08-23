@@ -1,4 +1,5 @@
 from rest_framework.serializers import ModelSerializer
+from rest_framework import serializers
 from .models import Category, Product, ProductImage, ProductFile
 
 
@@ -67,3 +68,21 @@ class ProductSerializer(ModelSerializer):
             image=image,
         )
         return instance
+
+
+class SummarizeCategorySerializer(ModelSerializer):
+    product_count = serializers.SerializerMethodField(
+        method_name="get_product_count")
+
+    class Meta:
+        model = Category
+        fields = ["id", "title", "product_count"]
+
+    def get_product_count(self, category):
+        return category.product_set.count()
+
+
+class SummarizeProductSerializer(ModelSerializer):
+    class Meta:
+        model = Product
+        fields = ["id", "title", "inventory", "unit_price"]

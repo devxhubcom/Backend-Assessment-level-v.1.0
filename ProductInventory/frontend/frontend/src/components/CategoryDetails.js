@@ -11,6 +11,7 @@ import Loader from "./Loader";
 import Error from "./Error";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import ProductForm from "./ProductForm";
+import ProductSummary from "./ProductSummary";
 
 const CategoryDetails = () => {
   const { categoryId } = useParams();
@@ -86,6 +87,9 @@ const CategoryDetails = () => {
           </div>
           <div className=' container my-2 text-start border border-1 border-opacity-100 rounded-1 p-2'>
             <ProductForm categoryId={categoryId} />
+          </div>
+          <div className=' container my-1 text-start p-2 border border-1 border-opacity-100 rounded-2'>
+            <ProductSummary categoryId={categoryId} />
           </div>
         </Col>
         <Col>

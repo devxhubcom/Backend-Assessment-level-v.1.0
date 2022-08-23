@@ -33,6 +33,9 @@ import {
   UPDATE_PRODUCT_PUT_REQUEST,
   UPDATE_PRODUCT_PUT_SUCCESS,
   UPDATE_PRODUCT_PUT_FAILED,
+  GET_PRODUCT_SUMMARY_REQUEST,
+  GET_PRODUCT_SUMMARY_SUCCESS,
+  GET_PRODUCT_SUMMARY_FAILED,
 } from "../constants/productConstants";
 
 export const getProductListAction = (categoryId) => async (dispatch) => {
@@ -269,3 +272,18 @@ export const updateProductPUTAction =
         dispatch({ type: UPDATE_PRODUCT_PUT_FAILED, payload: error });
       });
   };
+
+export const getProductSummaryListAction = (categoryId) => async (dispatch) => {
+  dispatch({ type: GET_PRODUCT_SUMMARY_REQUEST });
+  axios
+    .get(`/store/categories-summary/${categoryId}/products-summary/`)
+    .then((response) => {
+      return response.data;
+    })
+    .then((data) => {
+      dispatch({ type: GET_PRODUCT_SUMMARY_SUCCESS, payload: data });
+    })
+    .catch((error) => {
+      dispatch({ type: GET_PRODUCT_SUMMARY_FAILED, payload: error });
+    });
+};
