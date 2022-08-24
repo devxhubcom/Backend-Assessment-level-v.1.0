@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import ProductDetails from "./components/ProductDetails";
 import CategoryDetails from "./components/CategoryDetails";
 import CategorySummary from "./components/CategorySummary";
+import HistoryList from "./components/HistoryList";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             element={<ProductDetails />}
           />
           <Route path='summary/' element={<CategorySummary />} />
+          <Route path='history/' element={<HistoryList />} />
         </Routes>
       </BrowserRouter>
     </div>

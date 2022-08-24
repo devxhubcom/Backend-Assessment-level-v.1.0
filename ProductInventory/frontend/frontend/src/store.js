@@ -23,6 +23,11 @@ import {
   updateCategoryReducer,
   getCategorySummaryListReducer,
 } from "./reducers/categoryReducers";
+import {
+  getHistoryListReducer,
+  deleteHistoryReducer,
+  addHistoryReducer,
+} from "./reducers/historyReducers";
 
 const middleware = [thunk];
 
@@ -47,6 +52,9 @@ const store = configureStore({
     updateProductPATCHReducer: updateProductPATCHReducer,
     updateProductPUTReducer: updateProductPUTReducer,
     getProductSummaryListReducer: getProductSummaryListReducer,
+    getHistoryListReducer: getHistoryListReducer,
+    addHistoryReducer: addHistoryReducer,
+    deleteHistoryReducer: deleteHistoryReducer,
   },
   preloadedState: {},
   devTools: process.env.NODE_ENV !== "production",

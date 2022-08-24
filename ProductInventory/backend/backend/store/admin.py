@@ -1,9 +1,10 @@
 from django.contrib import admin
-from .models import Category, Product, ProductImage, ProductFile
+from .models import Category, History, Product, ProductImage, ProductFile
 
 # Register your models here.
 
 admin.site.register(Category)
+admin.site.register(History)
 
 
 class ProductImageAdmin(admin.TabularInline):

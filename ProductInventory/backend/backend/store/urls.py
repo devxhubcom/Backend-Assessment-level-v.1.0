@@ -12,6 +12,9 @@ router.register("categories-summary",
                 views.SummarizeCategoryViewSet, basename="categories-summary")
 
 
+router.register("histories", views.SimpleHistoryViewSet, basename="histories")
+
+
 # store/categories/{category_pk}/products/{product_pk}/
 category_router = routers.NestedSimpleRouter(
     router, "categories", lookup="category")
@@ -30,6 +33,7 @@ category_summary_router.register(
 
 # store/{category_pk}/products/{product_pk}/images/{pk}/
 # store/{category_pk}/products/{product_pk}/files/{pk}/
+# store/{category_pk}/products/{product_pk}/histories/{pk}/
 product_router = routers.NestedSimpleRouter(
     category_router, "products", lookup="product")
 
@@ -37,6 +41,8 @@ product_router.register(
     "images", views.ProductImageViewSet, basename="product-images")
 product_router.register(
     "files", views.ProductFileViewSet, basename="product-files")
+product_router.register(
+    "histories", views.HistoryViewSet, basename="product-histories")
 
 
 urlpatterns = [

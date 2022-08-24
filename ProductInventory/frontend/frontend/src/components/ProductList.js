@@ -41,7 +41,7 @@ const ProductList = ({ categoryId }) => {
                       />
                     </div>
                     <div className=' mx-2'>
-                      <h3>{product.title}</h3>
+                      <h4>{product.title}</h4>
                       <h6>{product.description}</h6>
                       <h6>{product.inventory}</h6>
                       <h6>৳{product.unit_price}</h6>

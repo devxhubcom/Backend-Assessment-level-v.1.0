@@ -24,10 +24,12 @@ const ProductDetailsImages = ({ id, categoryId }) => {
       <ProductImagesForm id={id} categoryId={categoryId} />
       {isLoading && <Loader />}
       {error && <Error error={error.message} />}
-      <div className=' d-flex row'>
+      <div className=' d-flex row p-2'>
         {productImages &&
           productImages.map((image) => (
-            <div key={image.id} className=' p-2 m-2 col'>
+            <div
+              key={image.id}
+              className=' border border-1 border-opacity-100 rounded-1 p-2 m-2 col'>
               <Image
                 key={image.id}
                 src={image.image}

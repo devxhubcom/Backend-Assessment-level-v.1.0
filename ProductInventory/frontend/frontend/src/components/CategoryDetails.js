@@ -25,6 +25,8 @@ const CategoryDetails = () => {
 
   const [editable, setEditable] = useState(false);
   const [title, setTitle] = useState("");
+  const [search, setSearch] = useState("");
+
   const navigate = useNavigate();
 
   const onSubmitHandler = (event) => {
@@ -35,8 +37,13 @@ const CategoryDetails = () => {
     dispatch(updateCategoryAction(categoryId, data));
   };
 
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    dispatch(getProductListAction(categoryId, search));
+  };
+
   useEffect(() => {
-    dispatch(getProductListAction(categoryId));
+    dispatch(getProductListAction(categoryId, search));
     dispatch(getCategoryDetailsAction(categoryId));
   }, [updatedCategory]);
 
@@ -84,6 +91,27 @@ const CategoryDetails = () => {
                 </Form>
               )}
             </div>
+          </div>
+          <div className=' border border-1 border-opacity-100 rounded-1 p-2 my-2'>
+            <Form onSubmit={handleSearchSubmit}>
+              <Row>
+                <Col md={9}>
+                  <Form.Control
+                    type='text'
+                    value={search}
+                    onChange={(event) => {
+                      setSearch(event.target.value);
+                    }}
+                  />
+                </Col>
+                <Col md={3}>
+                  <Button variant='success' type='submit'>
+                    <i className='fa-solid fa-magnifying-glass'></i>
+                    <span>&nbsp;</span>Search Products
+                  </Button>
+                </Col>
+              </Row>
+            </Form>
           </div>
           <div className=' container my-2 text-start border border-1 border-opacity-100 rounded-1 p-2'>
             <ProductForm categoryId={categoryId} />

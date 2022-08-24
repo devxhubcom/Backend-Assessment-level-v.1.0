@@ -24,11 +24,12 @@ const ProductDetailsFiles = ({ id, categoryId }) => {
       <ProductFilesForm id={id} categoryId={categoryId} />
       {isLoading && <Loader />}
       {error && <Error error={error.message} />}
+
       <ListGroup>
         {productFiles &&
           productFiles.map((file) => (
             <div key={file.id}>
-              <ListGroup.Item>
+              <ListGroup.Item className=' my-2'>
                 <div>
                   <Button
                     variant='danger'

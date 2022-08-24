@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -11,6 +11,7 @@ import ProductDetailsFiles from "./ProductDetailsFiles";
 import ProductDetailsImages from "./ProductDetailsImages";
 import Loader from "./Loader";
 import Error from "./Error";
+import { addHistoryAction } from "../actions/historyActions";
 
 const ProductDetails = () => {
   const { categoryId, id } = useParams();
@@ -24,6 +25,7 @@ const ProductDetails = () => {
   const { updatedProductPUT } = useSelector(
     (state) => state.updateProductPUTReducer
   );
+  const { history } = useSelector((state) => state.addHistoryReducer);
 
   const navigate = useNavigate();
 
@@ -32,6 +34,8 @@ const ProductDetails = () => {
   const [inventory, setInventory] = useState(1);
   const [unitPrice, setUnitPrice] = useState(1);
   const [image, setImage] = useState("");
+  const [quantity, setQuantity] = useState(1);
+  const [historyType, setHistorytype] = useState("I");
 
   const [editable, setEditable] = useState(false);
 
@@ -62,9 +66,17 @@ const ProductDetails = () => {
     }
   };
 
+  const handleAddHistorySubmit = (event) => {
+    event.preventDefault();
+    console.log(historyType, quantity);
+    dispatch(
+      addHistoryAction(categoryId, productDetails.id, quantity, historyType)
+    );
+  };
+
   useEffect(() => {
     dispatch(getProductDetailsAction(categoryId, id));
-  }, [updatedProductPATCH, updatedProductPUT]);
+  }, [updatedProductPATCH, updatedProductPUT, history]);
 
   return (
     <div className=' container-fluid text-start my-5'>
@@ -85,25 +97,67 @@ const ProductDetails = () => {
       </div>
 
       <Row>
-        <Col>
+        <Col className=' border border-1 border-opacity-100 rounded-1 m-2'>
           {productDetails && (
-            <div className=' my-2'>
+            <div className=' border border-1 border-opacity-100 rounded-1 my-2 p-2'>
               <Image
                 src={productDetails.image}
                 height={300}
                 width={500}
                 className=' rounded-2'
               />
-              <h2>{productDetails.title}</h2>
-              <h5>{productDetails.description}</h5>
-              <h6>{productDetails.inventory}</h6>
-              <h6>৳{productDetails.unit_price}</h6>
+              <h1>{productDetails.title}</h1>
+              <h3>{productDetails.description}</h3>
+              <h5>{productDetails.inventory}</h5>
+              <h5>৳{productDetails.unit_price}</h5>
             </div>
           )}
+          <div className=' border border-1 border-opacity-100 rounded-1 my-2 p-2'>
+            {productDetails && (
+              <Form onSubmit={handleAddHistorySubmit}>
+                <div className=' row'>
+                  <div className=' col'>
+                    <Form.Group className='mb-3'>
+                      <Form.Label>Type</Form.Label>
+                      <Form.Select
+                        name='historyType'
+                        value={historyType}
+                        onChange={(event) => {
+                          setHistorytype(event.target.value);
+                        }}>
+                        <option value='I'>In</option>
+                        <option value='O'>Out</option>
+                      </Form.Select>
+                    </Form.Group>
+                  </div>
+                  <div className=' col'>
+                    <Form.Group>
+                      <Form.Label>Quantity</Form.Label>
+                      <Form.Control
+                        type='number'
+                        name='quantity'
+                        value={quantity}
+                        onChange={(event) => {
+                          setQuantity(event.target.value);
+                        }}
+                      />
+                    </Form.Group>
+                  </div>
+                </div>
+                <Button variant='success' type='submit'>
+                  <i className='fa-solid fa-plus'></i>
+                  <span>&nbsp;</span>Add History
+                </Button>
+              </Form>
+            )}
+          </div>
         </Col>
+
         <Col>
           {editable && (
-            <Form onSubmit={handleSubmit}>
+            <Form
+              onSubmit={handleSubmit}
+              className=' border border-1 border-opacity-100 rounded-1 my-2 p-2'>
               <Form.Group className='mb-3'>
                 <Form.Label>Title</Form.Label>
                 <Form.Control
@@ -166,10 +220,10 @@ const ProductDetails = () => {
       </Row>
       <hr />
       <Row>
-        <Col>
+        <Col className=' border border-1 border-opacity-100 rounded-1 m-2 p-2'>
           <ProductDetailsFiles id={id} categoryId={categoryId} />
         </Col>
-        <Col>
+        <Col className=' border border-1 border-opacity-100 rounded-1 m-2 p-2'>
           <ProductDetailsImages id={id} categoryId={categoryId} />
         </Col>
       </Row>

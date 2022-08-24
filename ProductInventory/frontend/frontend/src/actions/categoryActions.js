@@ -20,10 +20,10 @@ import {
   GET_CATEGORY_SUMMARY_FAILED,
 } from "../constants/categoryConstants";
 
-export const getCategoryListAction = () => async (dispatch) => {
+export const getCategoryListAction = (search) => async (dispatch) => {
   dispatch({ type: GET_CATEGORY_LIST_REQUEST });
   axios
-    .get("/store/categories/")
+    .get(`/store/categories/?search=${search}`)
     .then((response) => {
       return response.data;
     })

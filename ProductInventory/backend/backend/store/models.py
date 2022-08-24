@@ -29,6 +29,24 @@ class Product(models.Model):
         return self.title
 
 
+class History(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    quantity = models.IntegerField(validators=[MinValueValidator(1)])
+
+    HISTORY_TYPE_CHOICE_IN = "I"
+    HISTORY_TYPE_CHOICE_OUT = "O"
+    HISTORY_TYPE_CHOICES = [
+        (HISTORY_TYPE_CHOICE_IN, "IN"),
+        (HISTORY_TYPE_CHOICE_OUT, "OUT")
+    ]
+
+    history_type = models.CharField(max_length=1, choices=HISTORY_TYPE_CHOICES)
+
+    def __str__(self) -> str:
+        return str(self.product)
+
+
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     image = models.ImageField(

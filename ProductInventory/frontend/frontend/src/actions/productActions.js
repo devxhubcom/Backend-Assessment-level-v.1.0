@@ -38,20 +38,21 @@ import {
   GET_PRODUCT_SUMMARY_FAILED,
 } from "../constants/productConstants";
 
-export const getProductListAction = (categoryId) => async (dispatch) => {
-  dispatch({ type: GET_PRODUCT_LIST_REQUEST });
-  axios
-    .get(`/store/categories/${categoryId}/products/`)
-    .then((response) => {
-      return response.data;
-    })
-    .then((data) => {
-      dispatch({ type: GET_PRODUCT_LIST_SUCCESS, payload: data });
-    })
-    .catch((error) => {
-      dispatch({ type: GET_PRODUCT_LIST_FAILED, payload: error });
-    });
-};
+export const getProductListAction =
+  (categoryId, search) => async (dispatch) => {
+    dispatch({ type: GET_PRODUCT_LIST_REQUEST });
+    axios
+      .get(`/store/categories/${categoryId}/products/?search=${search}`)
+      .then((response) => {
+        return response.data;
+      })
+      .then((data) => {
+        dispatch({ type: GET_PRODUCT_LIST_SUCCESS, payload: data });
+      })
+      .catch((error) => {
+        dispatch({ type: GET_PRODUCT_LIST_FAILED, payload: error });
+      });
+  };
 
 export const addProductAction = (categoryId, formData) => async (dispatch) => {
   dispatch({ type: ADD_PRODUCT_REQUEST });

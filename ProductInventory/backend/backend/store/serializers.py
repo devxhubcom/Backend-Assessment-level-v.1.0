@@ -1,6 +1,7 @@
 from rest_framework.serializers import ModelSerializer
 from rest_framework import serializers
-from .models import Category, Product, ProductImage, ProductFile
+from django.db.transaction import atomic
+from .models import Category, History, Product, ProductImage, ProductFile
 
 
 class CategorySerializer(ModelSerializer):
@@ -55,19 +56,69 @@ class ProductSerializer(ModelSerializer):
 
     def create(self, validated_data):
         category_id = self.context["category_id"]
-        title = validated_data["title"]
-        inventory = validated_data["inventory"]
-        unit_price = validated_data["unit_price"]
-        image = validated_data["image"]
 
         instance = Product.objects.create(
             category_id=category_id,
-            title=title,
-            inventory=inventory,
-            unit_price=unit_price,
-            image=image,
+            **validated_data
         )
+
         return instance
+
+
+class SimpleProductSerializer(ModelSerializer):
+    class Meta:
+        model = Product
+        fields = ["id", "title", "image"]
+
+
+class HistorySerializer(ModelSerializer):
+    class Meta:
+        model = History
+        fields = ["id", "created_at", "quantity", "history_type"]
+
+    def create(self, validated_data):
+        product_id = self.context["product_id"]
+        quantity = validated_data["quantity"]
+        history_type = validated_data["history_type"]
+        product = Product.objects.get(pk=product_id)
+
+        with atomic():
+            if history_type == "O":
+                if quantity < product.inventory:
+                    instance = History.objects.create(
+                        product_id=product_id,
+                        **validated_data)
+                    product.inventory -= quantity
+                    product.save()
+                    return instance
+
+                elif quantity == product.inventory:
+                    instance = History.objects.create(
+                        product_id=product_id,
+                        **validated_data)
+                    product.delete()
+                    return instance
+
+                else:
+                    raise serializers.ValidationError(
+                        "Quantity should be less than or equal product inventory")
+
+            elif history_type == "I":
+                instance = History.objects.create(
+                    product_id=product_id,
+                    **validated_data)
+                product.inventory += quantity
+                product.save()
+
+                return instance
+
+
+class SimpleHistorySerializer(ModelSerializer):
+    product = SimpleProductSerializer()
+
+    class Meta:
+        model = History
+        fields = ["id", "product", "created_at", "quantity", "history_type"]
 
 
 class SummarizeCategorySerializer(ModelSerializer):
