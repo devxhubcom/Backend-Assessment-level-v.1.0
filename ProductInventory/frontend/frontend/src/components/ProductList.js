@@ -18,7 +18,7 @@ const ProductList = ({ categoryId }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(getProductListAction(categoryId));
+    dispatch(getProductListAction(categoryId, ""));
   }, [addedProduct]);
 
   return (

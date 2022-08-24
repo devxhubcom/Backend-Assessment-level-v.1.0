@@ -39,7 +39,10 @@ const HistoryList = () => {
             onClick={() => {
               navigate("/", { replace: true });
             }}>
-            <i className='fa-solid fa-arrow-left-long'></i>
+            <h4>
+              <i className='fa-solid fa-arrow-left-long'></i>
+              <span>&nbsp;</span>Back
+            </h4>
           </Button>
         </div>
         <div className=' border border-1 border-opacity-100 rounded-1 p-2 my-2'>

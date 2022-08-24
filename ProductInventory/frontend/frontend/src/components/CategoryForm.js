@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { addCategoryReducer } from "../reducers/categoryReducers";
+import { useDispatch } from "react-redux";
 import { addCategoryAction } from "../actions/categoryActions";
 
 const CategoryForm = () => {
   const dispatch = useDispatch();
-  const { isLoading, addedCategory, error } = useSelector(
-    (state) => state.addCategoryReducer
-  );
+
   const [title, setTitle] = useState("");
 
   const onSubmitHandler = (event) => {
