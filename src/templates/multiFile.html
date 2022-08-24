@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="container">
+    <div class="row">
+        <!-- Latest Posts -->
+        <main class="posts-listing col-lg-8">
+            <div class="container">
+                <div class="row">
+                    <!-- post -->
+                    {% for file in object_list %}
+                    <div class="post col-xl-6">
+                        <div class="post-details">
+                            <div class="post-meta d-flex justify-content-between">
+                            </div>
+                            <a href="productDetails.html">
+                                <h2 class="h4">{{file.title}}</h2></a>
+                            <div class="widget categories">
+                                <header>
+                                    <h3 class="h6">Upload</h3>
+                                </header>
+                                <div class="item d-flex justify-content-between">
+                                    <span><h2 class="h4">{{file.file}}</h2></a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+                </div>
+            </div>
+        </main>
+        <aside class="col-lg-4">
+            <!-- Widget [Categories Widget]-->
+            <div class="widget categories">
+                <header>
+                    <h3 class="h6">Upload</h3>
+                </header>
+                <div class="item d-flex justify-content-between">
+              <span>
+                <form action="{% url 'file' %}" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <p>
+                    {{ form.title }}
+                  </p>
+                  <p>
+                    {{ form.file }}
+                  </p>
+                  <p>
+                    <input type="submit" value="Upload">
+                  </p>
+                </form>
+              </span>
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>
+{% endblock content %}
