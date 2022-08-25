@@ -1,4 +1,5 @@
 from gc import get_objects
+from logging import raiseExceptions
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -12,16 +13,17 @@ from django.shortcuts import get_object_or_404
 @api_view(['GET']) 
 def overview(request):
         rules={
-                'all product':'api/get',
-                'Add Product' :'api/create',
-                'Update Product':'api/update/pk',
-                'Delete Product':'api/product/pk/delete',
+                'File uploading api':'upload/',
+                'all product show':'api/get/',
+                'Add Product' :'api/create/',
+                'Update Product':'api/update/pk/',
+                'Delete Product':'api/delete/pk/',
+                
         }
         return Response(rules)
 
 @api_view(['GET']) 
 def getProduct(request):
-        # person={'name':'rakib'} 
         if request.query_params:
                 products=Product.objects.filter(**request.query_param.dict())
         else:
@@ -29,7 +31,6 @@ def getProduct(request):
         if products:
                 serializer=ProductSerializer(products,many=True)
                 return Response(serializer.data)
-        # products=Product.objects.all()
 
 @api_view(['POST']) 
 def addProduct(request):
