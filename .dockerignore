@@ -3,6 +3,7 @@
 **/.classpath
 **/.dockerignore
 **/.env
+**/.my-env
 **/.git
 **/.gitignore
 **/.toolstarget
