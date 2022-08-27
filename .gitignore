@@ -4,7 +4,9 @@ project-info.txt
 __pycache__/
 *.py[cod]
 *$py.class
-
+txt.txt
+.txt.txt
+/txt.txt
 # C extensions
 *.so
 
