@@ -1,4 +1,5 @@
 import uuid
+
 from django.db import models
 
 
@@ -18,7 +19,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2,null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE,null=True)
     stock = models.IntegerField(default=0, null=True, blank=True)
-    description= models.TextField(max_length=255, null = False, blank =False)
+    description= models.TextField(max_length=500, null = False, blank =False)
     image = models.ImageField(upload_to='images/product/', default= 'images/notfound.png', null=True, blank=True,) 
     created_at = models.DateTimeField(auto_now_add=True)
 

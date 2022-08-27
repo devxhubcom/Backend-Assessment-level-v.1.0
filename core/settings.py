@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # Project Applications Installed
     'shop.apps.ShopConfig',
     'user.apps.UserConfig',
+    'multiplefile.apps.MultiplefileConfig',
     'rest_framework',
 ]
 
@@ -128,7 +129,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
-
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'media/'
 
@@ -139,14 +140,22 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = '0578def94f573d'
-EMAIL_HOST_PASSWORD = '88fa12556c9a83'
-EMAIL_PORT = '2525'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'shopybusiness.co@gmail.com'
+EMAIL_HOST_PASSWORD  = 'gjmimnvoplafwaem'
 DEFAULT_FROM_EMAIL  = 'inventory management <no-reply@inventory.localhost>'
+
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.mailtrap.io'
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = '0578def94f573d'
+# EMAIL_HOST_PASSWORD = '88fa12556c9a83'
+# EMAIL_PORT = '2525'
+# DEFAULT_FROM_EMAIL  = 'inventory management <no-reply@inventory.localhost>'
 
 
 LOGIN = "signin/"
