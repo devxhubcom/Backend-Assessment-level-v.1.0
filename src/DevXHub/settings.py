@@ -42,12 +42,13 @@ INSTALLED_APPS = [
     'searchProduct',
     'multiFileUp',
     'user',
-    "corsheaders",
+
     # 3rd party App
     'rest_framework',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
+    'corsheaders',
 ]
 SITE_ID = 1
 
