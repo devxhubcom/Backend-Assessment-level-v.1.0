@@ -34,10 +34,12 @@ class Order(models.Model):
 
     )
     customer_name = models.CharField(max_length=255)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='orderitems')
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name='orderitems')
     quantity = models.PositiveSmallIntegerField()
     order_date = models.DateField(auto_now_add=True)
-    status = models.CharField(max_length=10, choices=STATUS_CHOICE, default='pending')
+    status = models.CharField(
+        max_length=10, choices=STATUS_CHOICE, default='pending')
 
     def __str__(self):
         return self.customer_name
