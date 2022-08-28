@@ -15,6 +15,8 @@ links:<br> 1. /api<br>
        5.accounts/signup <br>
        6.accounts/login <br>
        7.accounts/logout <br>
+       
+Django and React are marged togather. So full project can run on 127.0.0.1/ <br>
 
 
 Production Live link
