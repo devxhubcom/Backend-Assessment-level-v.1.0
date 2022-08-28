@@ -2,10 +2,10 @@
 
 Instructions:
 ======================
-1. pip install -r requirements.txt
+1. pip install -r requirements.txt 
 2. python manage.py runserver
 3. superuser:
-   username = sr
+   username = sr <br>
    pass = asdf
    
 links: 1. /api
