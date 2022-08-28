@@ -27,14 +27,19 @@ const AddOrderForm = () => {
     formData.append("quantity", Quantity);
     formData.append("status", status);
     dispatch(addOrderAction(formData));
+
   };
 
   useEffect(() => {
     dispatch(getAllProductsAction(""));
   }, [addedOrder]);
 
+
   return (
     <div className=' container my-5 border border-1 border-opacity-100 rounded-1 p-2'>
+    {addedOrder && (<div className="alert alert-success" role="alert">
+  This is a success alert—check it out!
+</div>) }
       <h1 className=' my-2'>Add Order</h1>
       <Button
         className=' my-4'
@@ -59,6 +64,7 @@ const AddOrderForm = () => {
           onChange={(event) => {
             setproduct(event.target.value);
           }}>
+            <option value="0">---</option>
           {allProducts &&
             allProducts.results &&
             allProducts.results.map((product) => (

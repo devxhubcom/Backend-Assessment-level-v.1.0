@@ -92,6 +92,7 @@ const AddProductForm = () => {
             onChange={(event) => {
               setcategory(event.target.value);
             }}>
+               <option value="0">---</option>
             {allCategory.map((i) => (
               <option key={i.id} value={i.id}>
                 {i.category_title}
