@@ -10,12 +10,11 @@ Instructions:
    
 links:<br> 1. /api<br>
        2.inventory/ <br>
-       3.accounts/signup <br>
-       4.accounts/login <br>
-       5.accounts/logout <br>
-       6.multifile/ <br>
-       7.http://127.0.0.1:8000/inventory/#/upload/ <br>
-        
+       3.multifile/ <br>
+       4.http://127.0.0.1:8000/inventory/#/upload/ <br>
+       5.accounts/signup <br>
+       6.accounts/login <br>
+       7.accounts/logout <br>
 
 
 Production Live link
