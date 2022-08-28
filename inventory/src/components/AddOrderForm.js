@@ -30,7 +30,7 @@ const AddOrderForm = () => {
   };
 
   useEffect(() => {
-    dispatch(getAllProductsAction());
+    dispatch(getAllProductsAction(""));
   }, [addedOrder]);
 
   return (

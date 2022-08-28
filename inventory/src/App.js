@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import AddProductForm from "./components/AddProductForm";
 import UpdateProductForm from "./components/UpdateProductForm";
@@ -14,7 +14,7 @@ function App() {
     <div className='App'>
       <div>
         <Navbar />
-        <BrowserRouter>
+        <HashRouter>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='upload/' element={<UploadFiles />} />
@@ -30,7 +30,7 @@ function App() {
               element={<UpdateProductForm />}
             />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </div>
       <footer class=''>
         <div class=' p-4 bg-dark text-white'>

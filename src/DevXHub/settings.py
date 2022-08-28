@@ -69,7 +69,7 @@ ROOT_URLCONF = 'DevXHub.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), os.path.join(BASE_DIR, 'build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -130,7 +130,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'build/static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
