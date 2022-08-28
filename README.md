@@ -8,7 +8,7 @@ Instructions:
    username = sr <br>
    pass = asdf <br>
    
-links:\n 1. /api<br>
+links:<br> 1. /api<br>
        2.inventory/ <br>
        3.accounts/signup <br>
        4.accounts/login <br>
