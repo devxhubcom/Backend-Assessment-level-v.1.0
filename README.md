@@ -1,3 +1,17 @@
+### Docker Run command 
+
+#### Project Build 
+    
+    docker-compose build 
+    
+#### Project Run
+    
+    docker-compose up
+    
+
+
+## Project API Urls Informations
+
 ### FILE UPLOAD IN API :
 
     http://127.0.0.1:8000/files/
