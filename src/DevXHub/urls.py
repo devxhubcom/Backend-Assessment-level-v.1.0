@@ -5,12 +5,12 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 
 urlpatterns = [
+    path('', include('searchProduct.urls')),
+    path('inventory/', TemplateView.as_view(template_name="index.html")),
     path('admin/', admin.site.urls),
-    path('', TemplateView.as_view(template_name='index.html')),
     path('accounts/', include('allauth.urls')),
     path('api-auth/', include('rest_framework.urls')),
     path('api/', include('inventory.urls')),
-    path('searchProduct/', include('searchProduct.urls')),
     path('multifile/', include('multiFileUp.urls')),
 ]
 if settings.DEBUG:

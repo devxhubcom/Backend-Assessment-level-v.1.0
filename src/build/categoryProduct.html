@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="container">
+    <div class="row">
+        <!-- Latest Posts -->
+        <main class="posts-listing col-lg-8">
+            <div class="container">
+                <div class="row">
+                    <!-- post -->
+                    {% for product in product %}
+                    <div class="post col-xl-6">
+                        <div class="post-thumbnail"><img src="{{product.image.url}}" alt="..."
+                                                                    class="img-fluid"></div>
+                        <div class="post-details">
+                            <div class="post-meta d-flex justify-content-between">
+                                {% for cat in product.category.all %}
+                                <div class="category">{{cat.title}}</div>
+                                {% endfor %}
+                            </div>
+                                <h3 class="h4">{{product.title}}</h3>
+                            <p class="text-muted">{{product.description|truncatewords:20}}</p>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+                </div>
+            </div>
+        </main>
+        <aside class="col-lg-4">
+            <!-- Widget [Categories Widget]-->
+            <div class="widget categories">
+                <header>
+                    <h3 class="h6">Categories</h3>
+                </header>
+                <div class="item d-flex justify-content-between"><a class="nav-link" href="/">All
+                    Products</a><span></span></div>
+                {% for cat in category %}
+                <div class="item d-flex justify-content-between"><a href="{% url 'category' cat.id %}">{{cat.title}}</a><span></span>
+                </div>
+                {% endfor %}
+            </div>
+        </aside>
+    </div>
+</div>
+{% endblock content %}
