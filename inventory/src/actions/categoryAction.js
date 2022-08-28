@@ -20,7 +20,7 @@ import {
 export const getAllCategoryAction = () => async (dispatch) => {
   dispatch({ type: GET_ALL_CATEGORY_REQUEST });
   axios
-    .get("/categories/")
+    .get("/api/categories/")
     .then((response) => {
       return response.data;
     })
@@ -38,7 +38,7 @@ export const getAllCategoryProductAction = (categoryId) => async (dispatch) => {
   dispatch({ type: GET_ALL_CATEGORY_PRODUCT_REQUEST });
   console.log(categoryId);
   axios
-    .get(`/categories/${categoryId}/products/`)
+    .get(`/api/categories/${categoryId}/products/`)
     .then((response) => {
       return response.data;
     })
@@ -55,7 +55,7 @@ export const getAllCategoryProductAction = (categoryId) => async (dispatch) => {
 export const addCategoryAction = (formData) => async (dispatch) => {
   dispatch({ type: ADD_CATEGORY_REQUEST });
   axios
-    .post(`/categories/`, formData)
+    .post(`/api/categories/`, formData)
     .then((response) => {
       return response.data;
     })
@@ -72,7 +72,7 @@ export const addCategoryAction = (formData) => async (dispatch) => {
 export const updateCategoryAction = (categoryId, title) => async (dispatch) => {
   dispatch({ type: UPDATE_CATEGORY_REQUEST });
   axios
-    .put(`/categories/${categoryId}/`, {
+    .put(`/api/categories/${categoryId}/`, {
       id: categoryId,
       category_title: title,
     })
@@ -92,7 +92,7 @@ export const updateCategoryAction = (categoryId, title) => async (dispatch) => {
 export const deleteCategoryAction = (categoryId) => async (dispatch) => {
   dispatch({ type: DELETE_CATEGORY_REQUEST });
   axios
-    .delete(`/categories/${categoryId}/`)
+    .delete(`/api/categories/${categoryId}/`)
     .then((response) => {
       return response.data;
     })

@@ -6,10 +6,10 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('inventory/', TemplateView.as_view(template_name='index.html')),
+    path('', TemplateView.as_view(template_name='index.html')),
     path('accounts/', include('allauth.urls')),
     path('api-auth/', include('rest_framework.urls')),
-    path('', include('inventory.urls')),
+    path('api/', include('inventory.urls')),
     path('searchProduct/', include('searchProduct.urls')),
     path('multifile/', include('multiFileUp.urls')),
 ]

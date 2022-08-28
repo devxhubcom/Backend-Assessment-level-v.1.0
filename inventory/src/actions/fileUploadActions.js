@@ -14,7 +14,7 @@ import axios from "axios";
 export const getAllFilesAction = () => async (dispatch) => {
   dispatch({ type: GET_FILE_REQUEST });
   axios
-    .get(`/fileup/`)
+    .get(`/api/fileup/`)
     .then((response) => {
       return response.data;
     })
@@ -31,7 +31,7 @@ export const getAllFilesAction = () => async (dispatch) => {
 export const addFileAction = (formData) => async (dispatch) => {
   dispatch({ type: ADD_FILE_REQUEST });
   axios
-    .post(`/fileup/`, formData)
+    .post(`/api/fileup/`, formData)
     .then((response) => {
       return response.data;
     })
@@ -48,7 +48,7 @@ export const addFileAction = (formData) => async (dispatch) => {
 export const deleteFileAction = (fileId) => async (dispatch) => {
   dispatch({ type: DELETE_FILE_REQUEST });
   axios
-    .delete(`/fileup/${fileId}/`)
+    .delete(`/api/fileup/${fileId}/`)
     .then((response) => {
       return response.data;
     })

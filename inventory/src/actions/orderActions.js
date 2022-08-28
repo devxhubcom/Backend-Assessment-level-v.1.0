@@ -11,7 +11,7 @@ import {
 export const addOrderAction = (formData) => async (dispatch) => {
   dispatch({ type: ADD_ORDER_REQUEST });
   axios
-    .post(`/orders/`, formData)
+    .post(`/api/orders/`, formData)
     .then((response) => {
       return response.data;
     })
@@ -28,7 +28,7 @@ export const addOrderAction = (formData) => async (dispatch) => {
 export const getOrderAction = (search) => async (dispatch) => {
   dispatch({ type: GET_ORDER_REQUEST });
   axios
-    .get(`/orders/?search=${search}`)
+    .get(`/api/orders/?search=${search}`)
     .then((response) => {
       return response.data;
     })

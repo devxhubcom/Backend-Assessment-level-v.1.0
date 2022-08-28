@@ -20,7 +20,7 @@ import {
 export const getAllProductsAction = (search) => async (dispatch) => {
   dispatch({ type: GET_ALL_PRODUCT_REQUEST });
   axios
-    .get(`/allproducts/?search=${search}`)
+    .get(`/api/allproducts/?search=${search}`)
     .then((response) => {
       return response.data;
     })
@@ -37,7 +37,7 @@ export const getAllProductsAction = (search) => async (dispatch) => {
 export const addProductsAction = (formData) => async (dispatch) => {
   dispatch({ type: ADD_PRODUCT_REQUEST });
   axios
-    .post(`/allproducts/`, formData)
+    .post(`/api/allproducts/`, formData)
     .then((response) => {
       return response.data;
     })
@@ -54,7 +54,7 @@ export const addProductsAction = (formData) => async (dispatch) => {
 export const getProductsAction = (productId) => async (dispatch) => {
   dispatch({ type: GET_PRODUCT_REQUEST });
   axios
-    .get(`/allproducts/${productId}/`)
+    .get(`/api/allproducts/${productId}/`)
     .then((response) => {
       return response.data;
     })
@@ -72,7 +72,7 @@ export const updateProductsAction =
   (productId, formData) => async (dispatch) => {
     dispatch({ type: UPDATE_PRODUCT_REQUEST });
     axios
-      .put(`/allproducts/${productId}/`, formData)
+      .put(`/api/allproducts/${productId}/`, formData)
       .then((response) => {
         return response.data;
       })
@@ -89,7 +89,7 @@ export const updateProductsAction =
 export const deleteProductsAction = (productId) => async (dispatch) => {
   dispatch({ type: DELETE_PRODUCT_REQUEST });
   axios
-    .delete(`/allproducts/${productId}/`)
+    .delete(`/api/allproducts/${productId}/`)
     .then((response) => {
       return response.data;
     })

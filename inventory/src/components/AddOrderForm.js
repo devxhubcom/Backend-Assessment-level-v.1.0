@@ -41,9 +41,7 @@ const AddOrderForm = () => {
 
   return (
     <div className=' container my-5 border border-1 border-opacity-100 rounded-1 p-2'>
-    {addedOrder && (<div className="alert alert-success" role="alert">
-  This is a success alert—check it out!
-</div>) }
+
       <h1 className=' my-2'>Add Order</h1>
       <Button
         className=' my-4'
