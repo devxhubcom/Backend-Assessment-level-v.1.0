@@ -32,6 +32,15 @@ const AddProductForm = () => {
     formData.append("image", Image);
     formData.append("category", category);
     dispatch(addProductsAction(formData));
+    setDescription("")
+    setPrice("")
+    setManufactureDate("")
+    setExpiryDate("")
+    setQuantity("")
+    setImage("")
+    setcategory("")
+    setTitle("")
+  
   };
 
   useEffect(() => {

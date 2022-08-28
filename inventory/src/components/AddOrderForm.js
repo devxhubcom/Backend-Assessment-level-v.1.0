@@ -27,6 +27,10 @@ const AddOrderForm = () => {
     formData.append("quantity", Quantity);
     formData.append("status", status);
     dispatch(addOrderAction(formData));
+    setName("")
+    setQuantity("")
+    setproduct("")
+    setstatus("")
 
   };
 
