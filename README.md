@@ -25,8 +25,6 @@ To learn more about us - [DevXHub](https://devxhub.com)
 
 Project brief
 =
-## Have to convert the following tasks into backend.
-
 ### Procedure's to be followed: 
 1. You can do this assessment in two ways. By yourself or with our team. Better work with our team by collaborating cause if you are stuck anywhere they will guide you thoroughly.
 2. To work with our team you’ll need a Skype ID. And then please join with this Skype ID: hadisur_rahman
