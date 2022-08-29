@@ -65,12 +65,10 @@ Sharing any sort of assignment materials & resources is completely prohibited. �
 #HAPPY CODING 😍
 
 📣Stay connected with us:
+
 https://linkedin.com/company/devxhubcom
-
 https://facebook.com/devxhubcom
-
 https://twitter.com/DevXhub_Com
-
 https://instagram.com/devxhub_com
 
 📣 Recruiter Linkedin Profile:  
