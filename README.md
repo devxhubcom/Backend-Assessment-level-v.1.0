@@ -57,10 +57,6 @@ Take your time but try to deliver it within 1 week. If we don't see any activity
 Better keeps us updated daily activity if working with team. 
 
 
-##Disclaimer: Sharing any sort of assignment materials & resources is completely prohibited. 😊 
-=
-
-
 📣Stay connected with us:
 
 https://linkedin.com/company/devxhubcom
@@ -77,4 +73,7 @@ https://www.linkedin.com/in/hudacse6/
 
 
 #HAPPY CODING 😍
+=
 
+
+###Disclaimer: Sharing any sort of assignment materials & resources is completely prohibited. 😊 
