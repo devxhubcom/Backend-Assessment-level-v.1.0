@@ -1,7 +1,7 @@
 {% block content %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'index' %}">Navbar</a>
+    <a class="navbar-brand" href="/">Inventory Application</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -60,6 +60,9 @@
         {% endif %}
         <li class="nav-item">
           <a class="nav-link active" href="{% url 'search-index' %}">Search</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'upload-index' %}">Upload</a>
         </li>
       </ul>
       <ul class="navbar-nav me-2 mb-2 mb-lg-0">

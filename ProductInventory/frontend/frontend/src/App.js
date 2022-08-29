@@ -1,15 +1,17 @@
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes, HashRouter } from "react-router-dom";
 import Home from "./components/Home";
 import ProductDetails from "./components/ProductDetails";
 import CategoryDetails from "./components/CategoryDetails";
 import CategorySummary from "./components/CategorySummary";
 import HistoryList from "./components/HistoryList";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <div className='App'>
-      <BrowserRouter>
+      <Navbar />
+      <HashRouter>
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='category/:categoryId/' element={<CategoryDetails />} />
@@ -20,7 +22,7 @@ function App() {
           <Route path='summary/' element={<CategorySummary />} />
           <Route path='history/' element={<HistoryList />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }

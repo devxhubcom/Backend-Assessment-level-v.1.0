@@ -28,7 +28,10 @@ const ProductFilesForm = ({ id, categoryId }) => {
             }}
           />
         </Form.Group>
-        <Button type='submit'>Submit</Button>
+        <Button variant='success' type='submit'>
+          <i class='fa-solid fa-cloud-arrow-up'></i>
+          <span>&nbsp;</span>Upload
+        </Button>
       </Form>
     </div>
   );

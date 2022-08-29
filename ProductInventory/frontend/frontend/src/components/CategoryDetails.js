@@ -56,39 +56,48 @@ const CategoryDetails = () => {
               {isLoading && <Loader />}
               {error && <Error error={error.message} />}
               {categoryDetails && <h1>{categoryDetails.title}</h1>}
-              <Button
-                variant='info'
-                onClick={() => {
-                  navigate("/", { replace: true });
-                }}>
-                <i className='fa-solid fa-arrow-left-long'></i>
-              </Button>
-              <Button
-                onClick={() => {
-                  setEditable(!editable);
-                  setTitle(categoryDetails.title);
-                }}>
-                <i className='fa-solid fa-pen-to-square'></i>
-              </Button>
+              <div className=' btn-group'>
+                <Button
+                  variant='info'
+                  onClick={() => {
+                    navigate("/", { replace: true });
+                  }}>
+                  <i className='fa-solid fa-arrow-left-long'></i>
+                  <span>&nbsp;</span>Back
+                </Button>
+                <Button
+                  variant='warning'
+                  onClick={() => {
+                    setEditable(!editable);
+                    setTitle(categoryDetails.title);
+                  }}>
+                  <i className='fa-solid fa-pen-to-square'></i>
+                  <span>&nbsp;</span>Edit
+                </Button>
+              </div>
             </div>
             <div className=' container my-2 text-start'>
               {editable && (
-                <Form onSubmit={onSubmitHandler}>
-                  <Form.Group className='mb-3'>
-                    <Form.Label>Title</Form.Label>
-                    <Form.Control
-                      type='text'
-                      placeholder='Enter Title'
-                      value={title}
-                      onChange={(event) => {
-                        setTitle(event.target.value);
-                      }}
-                    />
-                  </Form.Group>
-                  <Button variant='warning' type='submit'>
-                    <i className='fa-solid fa-check'></i>
-                  </Button>
-                </Form>
+                <div className=' border border-1 border-opacity-100 rounded-1 my-2 p-2'>
+                  <h5>Update Category</h5>
+                  <Form onSubmit={onSubmitHandler}>
+                    <Form.Group className='mb-3'>
+                      <Form.Label>Title</Form.Label>
+                      <Form.Control
+                        type='text'
+                        placeholder='Enter Title'
+                        value={title}
+                        onChange={(event) => {
+                          setTitle(event.target.value);
+                        }}
+                      />
+                    </Form.Group>
+                    <Button variant='warning' type='submit'>
+                      <i className='fa-solid fa-check'></i>
+                      <span>&nbsp;</span>Update
+                    </Button>
+                  </Form>
+                </div>
               )}
             </div>
           </div>

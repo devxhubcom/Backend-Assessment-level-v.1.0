@@ -19,6 +19,7 @@ const CategoryForm = () => {
   return (
     <div>
       <div>
+        <h5>Add New Category</h5>
         <Form onSubmit={onSubmitHandler}>
           <Form.Group className='mb-3'>
             <Form.Label>Title</Form.Label>
@@ -33,6 +34,7 @@ const CategoryForm = () => {
           </Form.Group>
           <Button variant='success' type='submit'>
             <i className='fa-solid fa-plus'></i>
+            <span>&nbsp;</span>Add Category
           </Button>
         </Form>
       </div>

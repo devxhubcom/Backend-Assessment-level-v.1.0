@@ -47,7 +47,7 @@ const ProductList = ({ categoryId }) => {
                       <h6>৳{product.unit_price}</h6>
                     </div>
 
-                    <div className=' mx-2'>
+                    <div className=' mx-2 btn-group'>
                       <Button
                         variant='danger'
                         onClick={() => {

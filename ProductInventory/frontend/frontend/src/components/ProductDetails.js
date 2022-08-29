@@ -82,17 +82,19 @@ const ProductDetails = () => {
     <div className=' container-fluid text-start my-5'>
       {isLoading && <Loader />}
       {error && <Error error={error.message} />}
-      <div className=' d-block my-2'>
+      <div className=' d-block my-2 btn-group'>
         <Button
+          variant='info'
           onClick={() => {
             navigate(`/category/${categoryId}/`, { replace: true });
           }}>
           <i className='fa-solid fa-arrow-left-long'></i>
+          <span>&nbsp;</span>Back
         </Button>
-      </div>
-      <div className=' d-block my-2'>
-        <Button onClick={setFields}>
+
+        <Button variant='warning' onClick={setFields}>
           <i className='fa-solid fa-pen-to-square'></i>
+          <span>&nbsp;</span>Edit
         </Button>
       </div>
 
@@ -113,6 +115,7 @@ const ProductDetails = () => {
             </div>
           )}
           <div className=' border border-1 border-opacity-100 rounded-1 my-2 p-2'>
+            <h5>Add Product History</h5>
             {productDetails && (
               <Form onSubmit={handleAddHistorySubmit}>
                 <div className=' row'>
@@ -155,66 +158,68 @@ const ProductDetails = () => {
 
         <Col>
           {editable && (
-            <Form
-              onSubmit={handleSubmit}
-              className=' border border-1 border-opacity-100 rounded-1 my-2 p-2'>
-              <Form.Group className='mb-3'>
-                <Form.Label>Title</Form.Label>
-                <Form.Control
-                  type='text'
-                  placeholder='Enter Title'
-                  value={title}
-                  onChange={(event) => {
-                    setTitle(event.target.value);
-                  }}
-                />
-              </Form.Group>
-              <Form.Group className='mb-3'>
-                <Form.Label>Description</Form.Label>
-                <Form.Control
-                  type='text'
-                  placeholder='Enter Description'
-                  value={description}
-                  onChange={(event) => {
-                    setDescription(event.target.value);
-                  }}
-                />
-              </Form.Group>
-              <Form.Group className='mb-3'>
-                <Form.Label>Inventroy</Form.Label>
-                <Form.Control
-                  type='text'
-                  placeholder='Enter Inventroy'
-                  value={inventory}
-                  onChange={(event) => {
-                    setInventory(event.target.value);
-                  }}
-                />
-              </Form.Group>
-              <Form.Group className='mb-3'>
-                <Form.Label>Unit Price</Form.Label>
-                <Form.Control
-                  type='text'
-                  placeholder='Enter Unit Price'
-                  value={unitPrice}
-                  onChange={(event) => {
-                    setUnitPrice(event.target.value);
-                  }}
-                />
-              </Form.Group>
-              <Form.Group className='mb-3'>
-                <Form.Label>Image</Form.Label>
-                <Form.Control
-                  type='file'
-                  onChange={(event) => {
-                    setImage(event.target.files[0]);
-                  }}
-                />
-              </Form.Group>
-              <Button variant='primary' type='submit'>
-                Submit
-              </Button>
-            </Form>
+            <div className=' border border-1 border-opacity-100 rounded-1 my-2 p-2'>
+              <h5>Update Product</h5>
+              <Form onSubmit={handleSubmit}>
+                <Form.Group className='mb-3'>
+                  <Form.Label>Title</Form.Label>
+                  <Form.Control
+                    type='text'
+                    placeholder='Enter Title'
+                    value={title}
+                    onChange={(event) => {
+                      setTitle(event.target.value);
+                    }}
+                  />
+                </Form.Group>
+                <Form.Group className='mb-3'>
+                  <Form.Label>Description</Form.Label>
+                  <Form.Control
+                    type='text'
+                    placeholder='Enter Description'
+                    value={description}
+                    onChange={(event) => {
+                      setDescription(event.target.value);
+                    }}
+                  />
+                </Form.Group>
+                <Form.Group className='mb-3'>
+                  <Form.Label>Inventroy</Form.Label>
+                  <Form.Control
+                    type='text'
+                    placeholder='Enter Inventroy'
+                    value={inventory}
+                    onChange={(event) => {
+                      setInventory(event.target.value);
+                    }}
+                  />
+                </Form.Group>
+                <Form.Group className='mb-3'>
+                  <Form.Label>Unit Price</Form.Label>
+                  <Form.Control
+                    type='text'
+                    placeholder='Enter Unit Price'
+                    value={unitPrice}
+                    onChange={(event) => {
+                      setUnitPrice(event.target.value);
+                    }}
+                  />
+                </Form.Group>
+                <Form.Group className='mb-3'>
+                  <Form.Label>Image</Form.Label>
+                  <Form.Control
+                    type='file'
+                    onChange={(event) => {
+                      setImage(event.target.files[0]);
+                    }}
+                  />
+                </Form.Group>
+                <Button variant='warning' type='submit'>
+                  <i className='fa-solid fa-check'></i>
+                  <span>&nbsp;</span>Update
+                </Button>
+              </Form>
+            </div>
           )}
         </Col>
       </Row>

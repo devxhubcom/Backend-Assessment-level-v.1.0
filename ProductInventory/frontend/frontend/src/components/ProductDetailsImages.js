@@ -33,8 +33,8 @@ const ProductDetailsImages = ({ id, categoryId }) => {
               <Image
                 key={image.id}
                 src={image.image}
-                height={200}
-                width={300}
+                height={250}
+                width={400}
                 className=' rounded-2'
               />
               <Button

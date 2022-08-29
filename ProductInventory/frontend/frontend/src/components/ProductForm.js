@@ -32,6 +32,7 @@ const ProductForm = ({ categoryId }) => {
     <div>
       {isLoading && <Loader />}
       {error && <Error error={error.message} />}
+      <h5>Add New Product</h5>
       <Form onSubmit={onSubmitHandler}>
         <Form.Group className='mb-3'>
           <Form.Label>Title</Form.Label>
@@ -86,8 +87,9 @@ const ProductForm = ({ categoryId }) => {
             }}
           />
         </Form.Group>
-        <Button variant='primary' type='submit'>
-          Submit
+        <Button variant='success' type='submit'>
+          <i className='fa-solid fa-plus'></i>
+          <span>&nbsp;</span>Add Product
         </Button>
       </Form>
     </div>
