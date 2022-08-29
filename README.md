@@ -26,13 +26,11 @@ To learn more about us - [DevXHub](https://devxhub.com)
 Project brief
 =
 ### Procedure's to be followed: 
-1. You can do this assessment in two ways. By yourself or with our team. Better work with our team by collaborating cause if you are stuck anywhere they will guide you thoroughly.
+1. You can do this assessment in two ways. By yourself or with our team.
 2. To work with our team you’ll need a Skype ID. And then please join with this Skype ID: hadisur_rahman
-4. You’re allowed to upload the code to any free hosting resources and can share the project live demo link while pushing the code in git repo. However, you’re committed to destroying that demo link after finishing the assessment or assignment.
-5. Please keep your branch up to date.  
 
 ## Requirements
-1. Create a github repo, make it private and work on it. 
+1. Create a github repo, and work on it, and share with us [join the above skype ID for sharing the repo link]. 
 2. Use Django Framework and Django Rest Framework. 
     * We will specify those for specific tasks.
 3. If you want you can use Docker to Dockerize your project - [Why Should You Use Docker](https://www.geeksforgeeks.org/why-should-you-use-docker-7-major-reasons/#:~:text=1%20Consistent%20%26%20Isolated%20Environment.%20The%20very%20first,by%20default%20compared%20to%20the%20case%20with%20)
@@ -54,15 +52,14 @@ When working on the project use consistent coding style. Please follow The Zen o
 
 
 ## Project Deadline
-Take your time but try to deliver it within 1 week. If we don't see any activity in your test repository after 2 or 3 days (at least initial commits), we will automatically withdraw your application.
+Take your time but try to deliver it within 1 week. If we don't see any activity in your provided repository after 2 or 3 days (at least initial commits), we will automatically withdraw your application.
 
-Better keeps us updated daily activity while working with team. 
+Better keeps us updated daily activity if working with team. 
 
 
-Sharing any sort of assignment materials & resources is completely prohibited. 😊 
+##Disclaimer: Sharing any sort of assignment materials & resources is completely prohibited. 😊 
 =
 
-#HAPPY CODING 😍
 
 📣Stay connected with us:
 
@@ -76,3 +73,8 @@ https://instagram.com/devxhub_com
 
 📣 Recruiter Linkedin Profile:  
 https://www.linkedin.com/in/hudacse6/
+
+
+
+#HAPPY CODING 😍
+
